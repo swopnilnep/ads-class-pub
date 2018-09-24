@@ -1,4 +1,4 @@
-## What are Stacks and Queues? 
+# What are Stacks and Queues
 
 * Linear Data Structure
 * Flexible Size (Add sizes and remove elements)
@@ -21,3 +21,8 @@
 
 [Object Oriented Implementation of Stacks](stacks_oop.py)
 [Procedural Implementation of Stacks](stacks_proc.py)
+
+## Differences between Procedural and Object-Oriented Programming
+
+* The role of a function in procedural programming is to take steps in the data
+* Object oriented programming allows for ways to add functions to find implementations that you did not think before
