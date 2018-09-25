@@ -71,11 +71,13 @@ class TestStackMethods:
             rpn_calc('3 2 1 + - *')
         exception_msg = excinfo.value.args[0]
         assert exception_msg == 'Stack is empty'          
+        
         token = '**'
         with pytest.raises(TokenError) as excinfo:
             rpn_calc('3 2 **')
         exception_msg = excinfo.value.args[0]          
         assert exception_msg == "Unknown token: {}".format(token)
+        
         token = 'a'
         with pytest.raises(TokenError) as excinfo:
             rpn_calc('a b +')

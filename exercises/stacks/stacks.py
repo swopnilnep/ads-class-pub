@@ -100,31 +100,35 @@ def base_converter(dec_num, base) -> str: # Complete
 
     return new_string
 
-def rpn_calc(postfix_expr: str): # Complete
+def rpn_calc(postfix_expr: str):
     '''Evaluate a postfix expression'''
     operand_stack = Stack()
     token_list = postfix_expr.split()
 
     try:
-        for token in token_list:
-            if token in "0123456789":
-                operand_stack.push(int(token))
-            else:
-                
+        for ind in range(len(token_list)):
+            if token_list[ind] in "0123456789":
+                # Seperates the operands in a Stack 
+                operand_stack.push(int(token_list[ind]))
+            elif token_list[ind] in "+-*/":
+                # Does calculations with the operands 
                 operand2 = operand_stack.pop()
                 operand1 = operand_stack.pop()
-                result = do_math(token,operand1,operand2)
-
-                # if operand_stack.is_empty():
-                operand_stack.push(result)
+                result = do_math(token_list[ind],operand1,operand2)
+            
+                # If the Stack still has elements 
+                if ind == len(token_list) - 1 and not operand_stack.is_empty():
+                    raise StackError("Stack is not empty")
+                else:
+                    operand_stack.push(result)
+            else:
+                raise TokenError("Unknown token: {}".format(token_list[ind]))
+        return(operand_stack.pop())
+        
     except IndexError:
-        print("Error")
-    except TokenError:
-        print("Error")
-
-    return operand_stack.pop()
-
-def do_math(op, op1, op2): # Complete
+        raise StackError("Stack is empty")
+    
+def do_math(op, op1, op2):
     if op == "+":
         return op1 + op2
     elif op == "-":
@@ -134,29 +138,29 @@ def do_math(op, op1, op2): # Complete
     elif op == "/":
         return op1 / op2
     else:
-        raise TokenError("Unknown operation: {}".format(op))
+        raise TokenError("Unknown token: {}".format(op))
 
-# def main():
+def main():
 
-#     '''String simple reverse'''
-# #     # print(rev_string_simple("123")) #321 
-# #     # print(rev_string_simple("123")) #321
-# #     # print(rev_string_simple("abc")) #cba 
-# #     # print(rev_string_simple("abc")) #cba
-# #     # print(par_checker_file('data/exercises/stacks/parentheses.txt'))
+    '''String simple reverse'''
+#     # print(rev_string_simple("123")) #321 
+#     # print(rev_string_simple("123")) #321
+#     # print(rev_string_simple("abc")) #cba 
+#     # print(rev_string_simple("abc")) #cba
+#     # print(par_checker_file('data/exercises/stacks/parentheses.txt'))
 
-#     '''String stack reverse'''
-#     # print(rev_string_stack("Hello"))
+    '''String stack reverse'''
+    # print(rev_string_stack("Hello"))
 
-#     '''Base conversion'''
-# #     # print(base_converter(1,2)) # 1
-# #     # print(base_converter(10,16)) # A
-# #     # print(base_converter(45,8)) # 55
-# #     # print(base_converter(10,10)) # Error 
+    '''Base conversion'''
+#     # print(base_converter(1,2)) # 1
+#     # print(base_converter(10,16)) # A
+#     # print(base_converter(45,8)) # 55
+#     # print(base_converter(10,10)) # Error 
 
-#     '''Reverse polish'''
-#     print(rpn_calc("1 3 2 +")) # Error
-#     # print(rpn_calc("3 2 1 +")) # Error
+    '''Reverse polish'''
+    # print(rpn_calc("2 2 2 * +")) # Error
+    # print(rpn_calc("a b +")) # Error
                     
-# if __name__=="__main__":
-#     main()
+if __name__=="__main__":
+    main()
