@@ -126,21 +126,33 @@ def rpn_calc(filename: str) -> int:
 
             for postfix_expr in test_list:
                 
-                result = postfix_eval(postfix_expr)
+                try:
+
+                    result = postfix_eval(postfix_expr)
+                    
+                    if isinstance(result, int) or isinstance(result, float):
+                        sum += result
+                    # print(postfix_expr + " " + str(result))
+
+                except TokenError:
+                    return "Unknown token "
+
+                except StackError: 
+                    result = "ERROR: Stack is not empty"
                 
-                if isinstance(result, int) or isinstance(result, float):
-                    sum += result
-                print(postfix_expr + " " + str(result))
+                print((postfix_expr + "\t" + str(result)).expandtabs(60))
 
             return sum
 
     except IOError:
         return "ERROR: File not found"
+    
+
 
 
 def main():
 
-    checksum = rpn_calc('data/projects/rpn/rpn_input_1.txt')
+    checksum = rpn_calc('data/projects/rpn/rpn_input_2.txt')
 
     if isinstance(checksum, str):
         print(checksum) 
