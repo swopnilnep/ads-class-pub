@@ -58,25 +58,48 @@ class Address:
 
     def __str__(self):
         '''__str method'''
-        return "{}, {}, {}, {}".format(self.street, self.city, self.state, self.zip)
+        return "{}, {}, {} {}".format(self.street, self.city, self.state, self.zip)
 
 
 class Customer:
     '''Customer class'''
     def __init__(self, name_init: str, dob_init: str, address_init: object):
         '''Constructor'''
-        raise NotImplementedError
+        self._name = name_init
+        self._dob = dob_init
+        self._address = address_init
 
-    # TODO: Implement data members as properties
+    # Name
+    @property
+    def name(self):
+        return self._name
+    
+    @name.setter
+    def name(self, name: str):
+        self._name = name
 
+    # Date of Birth
+    @property
+    def dob(self):
+        return self._dob
+    
+    @dob.setter
+    def dob(self, dob: str):
+        self._dob = dob
+
+    # Address
+    @property
+    def address(self):
+        return self._address
+
+    @address.setter    
     def move(self, new_address: object):
         '''Change address'''
-        raise NotImplementedError
+        self._address = new_address 
 
     def __str__(self):
         '''__str'''
-        raise NotImplementedError
-
+        return "{} ({}) {}".format(self.name, self.dob, self.address) 
 
 class Account(ABC):
     '''Account class'''
