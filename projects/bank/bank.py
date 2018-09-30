@@ -8,17 +8,57 @@ class Address:
     '''Address class'''
     def __init__(self, street_init: str, city_init: str, state_init: str, zip_init: str):
         '''__init__'''
-        raise NotImplementedError
+        self._street = street_init
+        self._city = city_init
+        self._state = state_init
+        self._zip = zip_init
 
-    # TODO: Implement data members as properties
+    # Street 
+    @property
+    def street(self):
+        return self._street
+    
+    @street.setter
+    def street(self, street_name):
+        self._street = street_name
+
+    # City 
+    @property
+    def city(self):
+      return self._city
+
+    @city.setter
+    def city(self, city_name: str):
+        self._city = city_name   
+
+    # State
+    @property
+    def state(self):
+      return self._state
+
+    @state.setter
+    def state(self, state_name: str):
+      self._state = state_name 
+
+    # Zip
+    @property
+    def zip(self):
+      return self._zip
+    
+    @zip.setter
+    def zip(self, zip_code: int):
+      self._zip = zip_code
 
     def __eq__(self, other: object):
         '''Compare 2 addresses'''
-        raise NotImplementedError
+        return self.street == other.street \
+        and self.city == other.city \
+        and self.state == other.state \
+        and self.zip == other.zip
 
     def __str__(self):
         '''__str method'''
-        raise NotImplementedError
+        return "{}, {}, {}, {}".format(self.street, self.city, self.state, self.zip)
 
 
 class Customer:
@@ -88,3 +128,10 @@ class SavingsAccount(Account):
     def __str__(self):
         '''__str__'''
         raise NotImplementedError
+
+
+def main():
+    swopnil = Address("700 College Drive", "Decorah", "IA", "52101")
+
+if __name__=="__main__":
+    main()
