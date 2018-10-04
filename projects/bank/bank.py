@@ -1,5 +1,6 @@
 '''Banking classes implementation'''
 #!/usr/bin/env python3
+# Swopnil N. Shrestha
 
 from abc import ABC, abstractmethod
 
@@ -17,38 +18,22 @@ class Address:
     @property
     def street(self):
         return self._street
-    
-    @street.setter
-    def street(self, street_name):
-        self._street = street_name
 
     # City 
     @property
     def city(self):
       return self._city
 
-    @city.setter
-    def city(self, city_name: str):
-        self._city = city_name   
-
     # State
     @property
     def state(self):
       return self._state
-
-    @state.setter
-    def state(self, state_name: str):
-      self._state = state_name 
 
     # Zip
     @property
     def zip(self):
       return self._zip
     
-    @zip.setter
-    def zip(self, zip_code: int):
-      self._zip = zip_code
-
     def __eq__(self, other: object):
         '''Compare 2 addresses'''
         return self.street == other.street \
@@ -58,8 +43,7 @@ class Address:
 
     def __str__(self):
         '''__str method'''
-        return "{}, {}, {} {}".format(self.street, self.city, self.state, self.zip)
-
+        return "{}\n{}, {} {}".format(self.street, self.city, self.state, self.zip)
 
 class Customer:
     '''Customer class'''
@@ -88,73 +72,179 @@ class Customer:
         self._dob = dob
 
     # Address
-    @property
     def address(self):
         return self._address
-
-    @address.setter    
+   
     def move(self, new_address: object):
         '''Change address'''
         self._address = new_address 
 
+    address = property(address, move)
+
     def __str__(self):
         '''__str'''
-        return "{} ({}) {}".format(self.name, self.dob, self.address) 
+        return "{} ({})\n{}".format(self.name, self.dob, self.address) 
 
 class Account(ABC):
     '''Account class'''
     @abstractmethod
     def __init__(self, owner_init: object, balance_init: float=0):
         '''Constructor'''
-        raise NotImplementedError
+        self._owner = owner_init
+        self._balance = balance_init
 
-    # TODO: Implement data members as properties
+    @property
+    def balance(self):
+        return self._balance
 
+    @property
+    def owner(self):
+        return self._owner
+
+    @balance.setter
+    def balance(self, value: float):
+        self._balance = value 
+
+    # Add money 
     def deposit(self, amount: float):
         '''Add money'''
-        raise NotImplementedError
+        if amount < 0: raise ValueError("Must deposit positive amount")
+        elif amount > 0: self._balance += amount 
+        
 
     def close(self):
         '''Close account'''
-        raise NotImplementedError
+        self._balance = 0
+   
 
     def __str__(self):
         '''__str__'''
-        raise NotImplementedError
-
+        return "Owner: {}\n".format(self._owner) + "Balance: {}".format(self.balance)
 
 class CheckingAccount(Account):
     '''CheckingAccount class'''
     def __init__(self, owner_init: object, fee_init: float, balance_init: float=0):
-        '''Constructor'''
-        raise NotImplementedError
-
+        super().__init__(owner_init, balance_init)
+        self._fee = fee_init
+        
     def process_check(self, amount: float):
         '''Process a check'''
-        raise NotImplementedError
+        if self.balance < amount:
+            self.balance -= self._fee
+        
+        else:
+            self._balance = self._balance - amount
 
     def __str__(self):
         '''__str__'''
-        raise NotImplementedError
+        return "Checking account\n" + "Owner: {}\n".format(self._owner) + "Balance: {:.2f}".format(self.balance)
 
 
 class SavingsAccount(Account):
     '''CheckingAccount class'''
     def __init__(self, owner_init: object, interest_rate_init: float, balance_init: float=0):
         '''Constructor'''
-        raise NotImplementedError
+        super().__init__(owner_init, balance_init)
+        self._interest_rate = interest_rate_init
 
     def yield_interest(self):
         '''Yield annual interest'''
-        raise NotImplementedError
+        self._balance = self._balance + self._balance * (self._interest_rate/100)
+        return self._balance
 
     def __str__(self):
         '''__str__'''
-        raise NotImplementedError
+        return "Savings account\n" + "Owner: {}\n".format(self._owner) + "Balance: {:.2f}".format(self.balance)
 
 
 def main():
-    swopnil = Address("700 College Drive", "Decorah", "IA", "52101")
+    address1 = Address("700 College Dr", "Decorah", "IA", "52101")
+    address2 = Address("700 College Drive", "Decorah", "IA", "52101")
+    address3 = Address("700 College Drive", "Decorah", "IA", "52101")
+
+    customer1 = Customer("John Doe", "1861-09-01", address1) 
+    customer2 = Customer("Swopnil Shrestha", "1980-06-06", address2) 
+    checking1 = CheckingAccount(customer1, 100, 200.00)
+    saving1 = SavingsAccount(customer1, 0.05, 500.00)
+
+    # Address check
+    # print(address1.street)
+    # print(address1.city)
+    # print(address1.state)
+    # print(address1.zip)
+    
+    # Address string check
+    # print(str(address1).strip() == ('700 College Dr\nDecorah, IA 52101'))
+    # print(address1)
+
+    # Address eq check
+    # print(address1 == address2) # False
+    # print(address2 == address3) # True
+    # print(address1 != address2) # True
+    # print(address1 is not address2) # True 
+
+    # Customer string check 
+    # Same error with address 
+
+    # Customer Move
+    # customer1.move(address2)
+    # print(customer1.address)
+
+    # Test Account
+    # print(checking1.owner)
+    # print(checking1.owner.address)
+    # print(checking1.balance)
+    # print(checking1)
+    
+    # Test account Deposit
+    # checking1.balance = 100
+    # print(checking1.balance)
+    # checking1.deposit(60)
+    # print(checking1.balance)
+    
+    # Test account deopsit error
+    # checking1.deposit(-1)
+    # print(checking1.balance)
+
+    # Test account close
+    # checking1.close()
+    # print(checking1.balance)
+    # saving1.close()
+    # print(saving1.balance)
+    
+    # checking1.close()
+    # checking1.deposit(2000)
+    # print(checking1.balance)
+    # checking1.process_check(5000)
+    # print(checking1.balance)
+    # checking1.process_check(-5000)
+
+    # checking1.balance = 100.0
+    # string_check = (str(checking1))
+    # check = ('Checking account\n' +'Owner: John Doe (1861-09-01)\n' + '700 College Dr\n' + 'Decorah, IA 52101\n' + 'Balance: 100.00')
+    # print(string_check == check)
+
+    # Yield Interest
+    # saving1.balance = 100
+    # print(saving1.balance)
+    # saving1.yield_interest()
+    # print(saving1.balance)
+
+    # Test Savings Str
+    print(saving1)
+
+    '''
+    * test address str # Implemented
+    * test customer str # Implemented 
+    * test customer move # Implemented 
+    * test account # Implemented 
+    * test account deposit # Implemented
+    * test checking process
+    * test checking str
+    * test savings yield interest
+    * test savings str
+    '''
+
 
 if __name__=="__main__":
     main()
