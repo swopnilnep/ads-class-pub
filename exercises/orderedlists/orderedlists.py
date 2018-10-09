@@ -46,7 +46,26 @@ class OrderedList:
 
     def __getitem__(self, position: int):
         '''Get item by its position'''
-        raise NotImplementedError
+        if isinstance(position, int):
+            current = self._head
+            for i in range(position):
+                current = current.next
+            if current is not None:
+                return current.data
+            else:
+                raise Exception("The list is empty")
+        elif isinstance(position, slice):
+            current_pos = 0
+            current = self._head
+            new_node = Node()
+            while current.next and current_pos < position.start:
+                current = current.next
+                current_pos += 1
+            while current and current_pos < position.stop:
+                new_node.append(current.data)
+                current = current.next
+                current_pos += 1
+            return new_node
 
     def __len__(self) -> int:
         '''Get list size'''
@@ -70,7 +89,25 @@ class OrderedList:
 
     def add(self, value: typing.Any) -> None:
         '''Add a new item to the list'''
-        raise NotImplementedError
+        current = self._head
+        prev = None
+        stop = False
+        while current is not None and not stop:
+            if current.data > value:
+                stop = True
+            else:
+                prev = current
+                current = current.next
+        new_node = Node(value)
+        # We are at the begining of the list
+        if prev is None:
+            new_node.next = self._head
+            self._head = new_node
+        # We are in the list
+        else:
+            new_node.next = current
+            prev.next = new_node
+        self._count = self._count + 1
 
     def pop(self, position: int=None):
         '''Remove at item (last one by default) and get its value'''
@@ -97,11 +134,56 @@ class OrderedList:
 
     def append(self, value: typing.Any) -> None:
         '''Add a new item to the end of the list'''
-        raise NotImplementedError
+        current = self._head
+        prev = None
+        stop = False
+        while current is not None and not stop:
+            if current.data > value:
+                stop = True
+            else:
+                prev = current
+                current = current.next
+        new_node = Node(value)
+        if prev is None:
+            new_node.next = self._head
+            self._head = new_node
+        else:
+            new_node.next = current
+            prev.next = new_node
+        self._count = self._count + 1        
+                
 
     def insert(self, position: int, value: typing.Any) -> None:
         '''Insert a new item into the list'''
-        raise NotImplementedError
+        current = self._head
+        prev = None
+        stop = False
+        while current is not None and not stop:
+            if current.data > value:
+                stop = True
+            else:
+                prev = current
+                current = current.next
+        new_node = Node(value)
+        if prev is None:
+            new_node.next = self._head
+            self._head = new_node
+        else:
+            new_node.next = current
+            prev.next = new_node
+        self._count = self._count + 1
+        
+    def search(self, value):
+        '''Search for an item in the list'''
+        current = self._head
+        while current is not None:
+            if current.data == value:
+                return True
+            elif current.data > value:
+                return False
+            else:
+                current = current.next
+        return False
 
     def search(self, value: typing.Any) -> bool:
         '''Search for an item in the list'''
@@ -117,7 +199,18 @@ class OrderedList:
 
     def index(self, value: typing.Any) -> int:
         '''Return position of an item in the list'''
-        raise NotImplementedError
+        current = self._head
+        index = 0
+        while current is not None:
+            if current.data == value:
+                return index
+            else:
+                current = current.next
+                index += 1
+        else:
+            index = -1
+            return index
+
 
 
 def print_list_status(lst):
