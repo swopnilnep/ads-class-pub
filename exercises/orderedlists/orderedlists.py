@@ -1,3 +1,6 @@
+# Swopnil N. Shrestha
+# October 9 2018
+
 '''Ordered List code template'''
 
 #!/usr/bin/env python3
@@ -226,35 +229,3 @@ def print_list_status(lst):
     except Exception as error:
         print(error)
     print('-----')
-
-
-def main():
-    '''Main function'''
-    print('Working with ordered linked lists')
-    ord_lst = OrderedList()
-    print_list_status(ord_lst)
-    print('Adding 160 to the list')
-    ord_lst.add(160)
-    print_list_status(ord_lst)
-    print('Adding 5 random values to the list')
-    for _ in range(5):
-        ord_lst.append(random.randint(100, 200))
-    print_list_status(ord_lst)
-    print('Inserting 5 random values to the list')
-    for _ in range(5):
-        position = random.randint(0, len(ord_lst)-1)
-        ord_lst.insert(position, random.randint(100, 200))
-    print_list_status(ord_lst)
-    print('Popping 5 items from random positions')
-    for _ in range(5):
-        position = random.randint(0, len(ord_lst)-1)
-        print('Popped {}'.format(ord_lst.pop(position)))
-    print_list_status(ord_lst)
-    print('Popping 5 last items')
-    for _ in range(5):
-        print('Popped {}'.format(ord_lst.pop()))
-    print_list_status(ord_lst)
-
-
-if __name__ == '__main__':
-    main()
