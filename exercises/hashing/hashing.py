@@ -4,27 +4,42 @@
 
 import random
 
+# keys_int = [10, 21, 32, 18, 17, 19, 42, 23, 99]
 
 def hash_remainder(key: int, size: int):
     '''Find hash using remainder'''
-    raise NotImplementedError
+    return key % size
 
 def hash_mid_sqr(key, size):
     '''Find hash using mid-square method'''
-    raise NotImplementedError
+    k_str = str(key ** 2)
+    length = len(k_str)
+    mid = length // 2
+
+    if length % 2 == 0: return int(k_str[mid - 1: mid + 1]) % size
+    else: return int(k_str[mid]) % size
 
 def hash_folding(key: int, size: int):
     '''Find hash using folding method'''
-    raise NotImplementedError
+    
+    k_str = key.replace('-','')
+    sum = 0
+    for i in range(0, len(k_str), 2): sum += int(k_str[i:i+2]) 
+    return hash_remainder(sum, size)
 
 def hash_str(key: str, size: int):
     '''Find string hash using simple sum-of-values method'''
-    raise NotImplementedError
+    sum = 0
+    for k in key:
+        sum += ord(k)
+    return hash_remainder(sum, size)
 
 def hash_str_weighted(key: str, size: int):
     '''Find string hash using character positions as weights'''
-    raise NotImplementedError
-
+    sum = 0
+    for k, pos in zip(key, range(len(key))):
+        sum += ord(k) * pos
+    return hash_remainder(sum, size)
 
 def main():
     '''Main function'''
