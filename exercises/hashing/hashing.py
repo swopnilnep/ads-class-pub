@@ -2,9 +2,9 @@
 
 #!/usr/bin/env python3
 
-import random
-
 # keys_int = [10, 21, 32, 18, 17, 19, 42, 23, 99]
+
+import random
 
 def hash_remainder(key: int, size: int):
     '''Find hash using remainder'''
@@ -16,8 +16,8 @@ def hash_mid_sqr(key, size):
     length = len(k_str)
     mid = length // 2
 
-    if length % 2 == 0: return int(k_str[mid - 1: mid + 1]) % size
-    else: return int(k_str[mid]) % size
+    if length % 2 == 0: return hash_remainder(int(k_str[mid - 1: mid + 1]), size)
+    else: return hash_remainder(int(k_str[0:2]), size)
 
 def hash_folding(key: int, size: int):
     '''Find hash using folding method'''
@@ -30,15 +30,13 @@ def hash_folding(key: int, size: int):
 def hash_str(key: str, size: int):
     '''Find string hash using simple sum-of-values method'''
     sum = 0
-    for k in key:
-        sum += ord(k)
+    for k in key: sum += ord(k)
     return hash_remainder(sum, size)
 
 def hash_str_weighted(key: str, size: int):
     '''Find string hash using character positions as weights'''
     sum = 0
-    for k, pos in zip(key, range(len(key))):
-        sum += ord(k) * pos
+    for k, pos in zip(key, range(len(key))): sum += ord(k) * pos
     return hash_remainder(sum, size)
 
 def main():
