@@ -18,11 +18,21 @@ The typed word and the list of words from the spell checker all have the same le
 
 ## Input
 
-The first line of the input specifies the number of test cases *t* (0 < t < 20). Each test case starts with a string and an integer *l* on one line. The string gives the word that was typed using the touchscreen keyboard, while *l* specifies the number of entries in the spell checker list (0 < l ≤ 10). Then follow *l* lines, each with one word of the spell checker list. You may safely assume that all words of one test case have the same length and no word is longer than 10000 characters (only lowercase ’a’ - ’z’). Furthermore, each word appears exactly once in the spell checker list on one test case.
+The first line of the input specifies the number of test cases *t* (0 < t < 20). 
+
+Each test case starts with a string and an integer *l* on one line. 
+
+The string gives the word that was typed using the touchscreen keyboard, while *l* specifies the number of entries in the spell checker list (0 < l ≤ 10). 
+
+Then follow *l* lines, each with one word of the spell checker list. 
+
+You may safely assume that all words of one test case have the same length and no word is longer than 10000 characters (only lowercase ’a’ - ’z’). Furthermore, each word appears exactly once in the spell checker list on one test case.
 
 ## Output
 
-For each test case, print the list of words sorted by their distance ascending. If two words have the same distance, sort them alphabetically. Print the distance of each word in the same line.
+For each test case, print the list of words sorted by their distance ascending. 
+
+If two words have the same distance, sort them alphabetically. Print the distance of each word in the same line.
 
 ### Sample input (data/projects/keyboard/sample.in)
 
