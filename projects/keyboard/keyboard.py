@@ -13,7 +13,7 @@ def get_string(filename: str) -> str:
             return inputFileHandle.read()
 
     except IOError:
-        sys.stderr.write( "[myScript] - Error: Could not open %s\n" % (inputFn) )
+        sys.stderr.write( "[myScript] - Error: Could not open %s\n" % (filename) )
         sys.exit(-1)
 
 def get_dict_from_str(keystrokes: str) -> dict:
