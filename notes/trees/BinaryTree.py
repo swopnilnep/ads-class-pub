@@ -1,7 +1,3 @@
-"""Tree building exercise"""
-#!/usr/bin/env python3
-
-
 class BinaryTree:
     """Binary Tree implementation as nodes and references"""
 
@@ -52,15 +48,26 @@ class BinaryTree:
             new_subtree.set_child_right(self._child_right)
         self._child_right = new_subtree
 
-    def clockwise(self):
-        """Clockwise tree traversal"""
+    def preorder(self):
+        """Pre-order tree traversal"""
+        print(self._key, end=" ")
+        if self._child_left:
+            self._child_left.preorder()
+        if self._child_right:
+            self._child_right.preorder()
+
+    def inorder(self):
+        """In-order tree traversal"""
+        if self._child_left:
+            self._child_left.inorder()
         print(self._key, end=" ")
         if self._child_right:
-            self._child_right.clockwise()
+            self._child_right.inorder()
+
+    def postorder(self):
+        """Post-order tree traversal"""
         if self._child_left:
-            self._child_left.clockwise()
-
-
-def build_tree_oop() -> object:
-    """Build a tree and return it"""
-    raise NotImplementedError
+            self._child_left.postorder()
+        if self._child_right:
+            self._child_right.postorder()
+        print(self._key, end=" ")

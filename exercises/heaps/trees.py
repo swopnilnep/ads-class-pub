@@ -1,4 +1,4 @@
-"""Tree building exercise"""
+"""Binary Tree implementation"""
 #!/usr/bin/env python3
 
 
@@ -52,15 +52,58 @@ class BinaryTree:
             new_subtree.set_child_right(self._child_right)
         self._child_right = new_subtree
 
-    def clockwise(self):
-        """Clockwise tree traversal"""
+    def preorder(self):
+        """Pre-order tree traversal"""
+        print(self._key, end=" ")
+        if self._child_left:
+            self._child_left.preorder()
+        if self._child_right:
+            self._child_right.preorder()
+
+    def inorder(self):
+        """In-order tree traversal"""
+        if self._child_left:
+            self._child_left.inorder()
         print(self._key, end=" ")
         if self._child_right:
-            self._child_right.clockwise()
+            self._child_right.inorder()
+
+    def postorder(self):
+        """Post-order tree traversal"""
         if self._child_left:
-            self._child_left.clockwise()
+            self._child_left.postorder()
+        if self._child_right:
+            self._child_right.postorder()
+        print(self._key, end=" ")
 
+    def height(self):
+        """Height of a tree"""
+        if not self._key:
+            return -1
+        if self._child_left:
+            height_left = self._child_left.height()
+        else:
+            height_left = -1
 
-def build_tree_oop() -> object:
-    """Build a tree and return it"""
-    raise NotImplementedError
+        if self._child_right:
+            height_right = self._child_right.height()
+        else:
+            height_right = -1
+
+        return 1 + max(height_left, height_right)
+
+    def size(self):
+        """Count nodes in a tree"""
+        if not self._key:
+            return 0
+        if self._child_left:
+            children_left = self._child_left.size()
+        else:
+            children_left = 0
+
+        if self._child_right:
+            children_right = self._child_right.size()
+        else:
+            children_right = 0
+
+        return 1 + children_left + children_right
