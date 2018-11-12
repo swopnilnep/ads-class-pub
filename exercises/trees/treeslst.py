@@ -49,4 +49,27 @@ def clockwise(root):
 
 def build_tree_lst() -> list:
     """Build a tree and return it"""
-    raise NotImplementedError
+    t = BinaryTree('a')
+    # Level 1
+    insert_child_left(t, 'b')
+    insert_child_right(t, 'c')
+    # Level 2
+    insert_child_right(get_child_left(t), 'd')
+    insert_child_left(get_child_right(t), 'e')
+    insert_child_right(get_child_right(t), 'f')
+ 
+    return t
+
+def main():
+    t = build_tree_lst()
+
+    # Test Cases
+    assert get_root_val(t) == 'a'
+    assert get_root_val(get_child_left(t)) == 'b'
+    assert get_root_val(get_child_right(t)) == 'c'
+    assert get_root_val(get_child_right(get_child_left(t))) == 'd'
+    assert get_root_val(get_child_left(get_child_right(t))) == 'e'
+    assert get_root_val(get_child_right(get_child_right(t))) == 'f'
+
+if __name__== "__main__":
+    main()

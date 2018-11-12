@@ -10,6 +10,12 @@ Complete the following exercises and submit your source code to KATIE as a singl
 
 3. What is the result of *pre-order* tree traversal of the tree in the picture?
 
+    `a b d c e f`
+
 4. What is the result of *in-order* tree traversal of the tree in the picture?
 
+    `b d a e c f`
+
 5. What is the result of *post-order* tree traversal of the tree in the picture?
+
+    `d b e f c a`

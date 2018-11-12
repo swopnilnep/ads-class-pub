@@ -1,0 +1,5 @@
+Pre Order: a b d c e f
+
+In Order: b d a e c f
+
+Post Order: d b e f c a

@@ -63,4 +63,25 @@ class BinaryTree:
 
 def build_tree_oop() -> object:
     """Build a tree and return it"""
-    raise NotImplementedError
+    t = BinaryTree('a')
+    t.insert_left('b')
+    t.insert_right('c')
+    t.get_child_left().insert_right('d')
+    t.get_child_right().insert_left('e')
+    t.get_child_right().insert_right('f')
+
+    return t
+
+def main():
+    t = build_tree_oop()
+
+    print(t.get_root_val())
+    print(t.get_child_left().get_root_val()) # b
+    print(t.get_child_right().get_root_val()) # c
+    print(t.get_child_left().get_child_right().get_root_val()) # d
+    print(t.get_child_right().get_child_left().get_root_val()) # e 
+    print(t.get_child_right().get_child_right().get_root_val()) # f
+
+
+if __name__== "__main__":
+    main()
