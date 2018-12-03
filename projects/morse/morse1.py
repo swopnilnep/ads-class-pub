@@ -3,6 +3,8 @@
 # encoding: UTF-8
 
 
+# from notes.trees.BinaryTree import BinaryTree
+
 class BinaryTree:
     """Binary Tree implementation as nodes and references"""
 
@@ -79,81 +81,56 @@ class BinaryTree:
 
 class Coder:
     """Morse Code Encoder/Decoder"""
-
     def __init__(self, file_in: str):
         """Constructor"""
-        self.morse_tree = BinaryTree('')
+        self.tree = BinaryTree('')
+        with open(file_in) as file: 
+            for line in file:
+                char, code = line.strip("\n").split("   ")
+                self.follow_and_insert(code, char)
+            print("Insert complete!")
 
-        with open(file_in) as morse_file:
-            for line in morse_file:
-                letter, code = line.split()
-                self.follow_and_insert(code, letter)
-
-
-    def follow_and_insert(self, code_str: str, letter: str):
-        """Follow the tree and insert a letter"""
-        current = self.morse_tree
-        
-        for symbol in code_str:        
-            if symbol == '.':
+    def follow_and_insert(self, code_str:str, letter:str): # working
+        '''Follow the tree and insert a letter'''
+        current = self.tree
+        for symbol in code_str:
+            if symbol == ".":
                 if current.get_child_left() == None:
                     current.insert_left('')
                 current = current.get_child_left()
-            if symbol == '-':
+            elif symbol == "-":
                 if current.get_child_right() == None:
                     current.insert_right('')
                 current = current.get_child_right()
-        """set the current node value to _letter_"""
         current.set_root_val(letter)
 
-    def follow_and_retrieve(self, code_str: str):
+    def follow_and_retrieve(self, code_str: str): # working
         """Follow the tree and retrieve a letter"""
-        current = self.morse_tree
+        current = self.tree
         for symbol in code_str:
-            """if _dot_, go to to the left child, else go to the right child"""
-            if symbol == '.':
-                if current != None:
-                    current = current.get_child_left()
-            if symbol == '-':
-                if current != None:
-                    current = current.get_child_right()
-
-        """return the current node value"""
-        if current != None:
-
-            return current.get_root_val()
-
+            if symbol == ".":
+                current = current.get_child_left()
+            elif symbol == "-":
+                current = current.get_child_right()
+        return current.get_root_val()
 
     def find_path(self, tree: object, letter: str, path: str):
         """Find a key"""
-        if tree == None: return False        
+        if tree.get_root_val() == None: return False
         elif tree.get_root_val() == letter: return path
-        else: return self.find_path(tree.get_child_left(), letter, path+'.') or self.find_path(tree.get_child_right(), letter, path+'-')
+        return self.find_path(tree.get_child_left(), letter, path+".")
 
     def encode(self, msg: str):
         """Encode a message"""
-        code = ''
-        path = ''
-        for word in msg.split():
-            for letter in word:
-                coded = str(self.find_path(self.morse_tree, letter, path)) + ' '
-                code = code + coded
-                if code == "False ": raise ValueError("Could not encode {}: {} is not in the tree".format(msg,letter))
-        return code
+        raise NotImplementedError
 
     def decode(self, code: str):
         """Decode a message"""
-        msg = ''
-        for letter in code.split():
-            if self.follow_and_retrieve(letter) != None:
-
-                msg += self.follow_and_retrieve(letter)
-            else:
-                raise ValueError("Could not decode {}: {} is not in the tree".format(code, letter))
-        return msg
+        raise NotImplementedError
 
 
 def main():
+
     morse_coder = Coder("data/projects/morse/morse.txt")
 
     '''Follow and insert tests '''
@@ -169,28 +146,28 @@ def main():
     # print(morse_coder.follow_and_retrieve('--..')) # z
 
     '''Find path tests '''
-    # morse_coder.find_path(morse_coder.tree, "f", "")
+    morse_coder.find_path(morse_coder.tree, "f", "")
 
-    print("Encoding 'sos'")
-    print("Expected: ... --- ...")
+    # print("Encoding 'sos'")
+    # print("Expected: ... --- ...")
 
-    print("Encoded : {}".format(morse_coder.encode("sos")))
-    print("---")
-    print("Encoding 'data structures'")
-    print("Expected: -.. .- - .- ... - .-. ..- -.-. - ..- .-. . ... ")
-    print("Encoded : {}".format(morse_coder.encode("data structures")))
-    print("---")
-    print("Encoding '$$'")
-    print("Expected: Error message")
-    try:
-        print("Encoded : {}".format(morse_coder.encode("$$")))
-    except ValueError as ve:
-        print("ERROR: {}".format(ve))
-    print("---")
-    print("Decoding '.... . .-.. .-.. --- --..-- -.-. ... .---- -.... -----'")
-    print("Expected: hello,cs160")
-    test_str = ".... . .-.. .-.. --- --..-- -.-. ... .---- -.... -----"
-    print("Decoded : {}".format(morse_coder.decode(test_str)))
+    # print("Encoded : {}".format(morse_coder.encode("sos")))
+    # print("---")
+    # print("Encoding 'data structures'")
+    # print("Expected: -.. .- - .- ... - .-. ..- -.-. - ..- .-. . ... ")
+    # print("Encoded : {}".format(morse_coder.encode("data structures")))
+    # print("---")
+    # print("Encoding '$$'")
+    # print("Expected: Error message")
+    # try:
+    #     print("Encoded : {}".format(morse_coder.encode("$$")))
+    # except ValueError as ve:
+    #     print("ERROR: {}".format(ve))
+    # print("---")
+    # print("Decoding '.... . .-.. .-.. --- --..-- -.-. ... .---- -.... -----'")
+    # print("Expected: hello,cs160")
+    # test_str = ".... . .-.. .-.. --- --..-- -.-. ... .---- -.... -----"
+    # print("Decoded : {}".format(morse_coder.decode(test_str)))
 
 if __name__ == "__main__":
     main()
