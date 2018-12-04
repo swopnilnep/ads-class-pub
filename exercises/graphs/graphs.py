@@ -1,6 +1,8 @@
 """Graphs and graphing algorithms"""
 #!/usr/bin/env python3
 # encoding: UTF-8
+# Swopnil N. Shrestha
+# CS160 | 2018
 
 import heapq
 import sys
@@ -150,17 +152,33 @@ class Graph:
         """Iterator"""
         return iter(self.vertices.values())
 
+    # TODO: Number of vertices
     def __len__(self):
         """Graph's size"""
-        raise NotImplementedError
-
+        return len(self.vertices)
+    
+    # TODO: Vertex with the most OUTGOING edges 
     def hub(self):
         """Find a Vertex with the most outgoing edges"""
-        raise NotImplementedError
+        
+        container = {}
+        for key in self:
+            edges = key.all_neighbors
+            container[key] = len(edges)
+        max_num = max(container.values())
+        
+        for key in container.keys():
+            if container[key] == max_num:
+                return key.get_key()
+  
 
+    # TODO: Count of all edges in the graph
     def size(self):
         """Find the number of edges in a Graph"""
-        raise NotImplementedError
+        count = 0
+        for v in self:
+            count = count + len(v.all_neighbors)
+        return count/2
 
     def dijkstra(self, start: Vertex) -> None:
         """Dijkstra's shortest path algorithm"""
@@ -185,3 +203,5 @@ class Graph:
                     if not found:
                         heapq.heappush(pq, [next_vertex.distance, next_vertex])
 
+if __name__ == '__main__':
+    main()
