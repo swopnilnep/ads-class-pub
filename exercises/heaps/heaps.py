@@ -52,7 +52,7 @@ class BinaryHeapMax:
                 self.size = self.size + 1     
                 self.perc_up(self.size -1)
 
-    def heapify(self, not_a_heap):
+    def heapify(self, not_a_heap, show_details=False):
         """Turning a list into a heap"""
         self.heap = [] + not_a_heap[:]
         self.size = len(not_a_heap)
@@ -61,6 +61,8 @@ class BinaryHeapMax:
         while cur_idx >= 0:
             self.perc_down(cur_idx)
             cur_idx = cur_idx - 1
+            if show_details: print(self.heap)
+            
 
     def get_max_child(self, parent_idx):
         """Getting a larger child"""
@@ -83,27 +85,30 @@ class BinaryHeapMax:
         return str(self.heap)
 
 def main():
-    heap_test = BinaryHeapMax(5)
-    heap_test.insert("A")
-    print(heap_test) # ['A']
-    heap_test.insert("B")
-    print(heap_test) # ['B', 'A']
-    heap_test.insert("C")
-    print(heap_test) # ['C', 'A', 'B']
-    heap_test.insert("D")
-    print(heap_test) # ['D', 'C', 'B', 'A']
-    heap_test.insert("E")
-    print(heap_test) # ['E', 'D', 'B', 'A', 'C']
-    heap_test.insert("F")
-    print(heap_test) # ['F', 'E', 'B', 'C', 'D']
-    heap_test.insert("Z")
-    print(heap_test) # ['Z', 'F', 'C', 'D', 'E']
-    heap_test.insert("H")
-    print(heap_test) # ['Z', 'H', 'D', 'E', 'F']
-    heap_test.insert("Y")
-    print(heap_test) # ['Z', 'Y', 'E', 'F', 'H']
-    heap_test.insert("Z")
-    print(heap_test) # ['Z', 'Z', 'F', 'H', 'Y']
+    # heap_test = BinaryHeapMax(5)
+    # heap_test.insert("A")
+    # print(heap_test) # ['A']
+    # heap_test.insert("B")
+    # print(heap_test) # ['B', 'A']
+    # heap_test.insert("C")
+    # print(heap_test) # ['C', 'A', 'B']
+    # heap_test.insert("D")
+    # print(heap_test) # ['D', 'C', 'B', 'A']
+    # heap_test.insert("E")
+    # print(heap_test) # ['E', 'D', 'B', 'A', 'C']
+    # heap_test.insert("F")
+    # print(heap_test) # ['F', 'E', 'B', 'C', 'D']
+    # heap_test.insert("Z")
+    # print(heap_test) # ['Z', 'F', 'C', 'D', 'E']
+    # heap_test.insert("H")
+    # print(heap_test) # ['Z', 'H', 'D', 'E', 'F']
+    # heap_test.insert("Y")
+    # print(heap_test) # ['Z', 'Y', 'E', 'F', 'H']
+    # heap_test.insert("Z")
+    # print(heap_test) # ['Z', 'Z', 'F', 'H', 'Y']
+
+    h1 = BinaryHeapMax()
+    h1.heapify([1, 2, 3, 6, 5, 4, 7, 8, 9], show_details=True)
 
 if __name__ == "__main__":
     main()

@@ -75,7 +75,7 @@ def main():
                     neighbor = bacon_list[i].get_neighbor(bacon_list[i + 1])
                     print(bacon_list[i].get_key(), 'worked with', bacon_list[i + 1].get_key(), 'in', neighbor)
         except:
-            print("Sorry,", search_field, "does not have a Bacon number.")
+            print(search_field, "does not have a Bacon number.")
 
 if __name__=="__main__":
     main()
