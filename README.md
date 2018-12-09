@@ -1,203 +1,317 @@
-# README
+# CS-160
 
-## What is this repository for?
+My notes and classwork for Luther College's CS-160 Class. References and other information from [Luther College's repo](https://github.com/LutherCS/ads-class-pub)
 
 * Algorithms and Data Structures class
 * Class notes
 * Code templates
 
-## How do I get set up?
-
-  Windows users may have to substitute *python3* with *py -3* for the following commands to work. You should keep the same file structure as **this** repository and run all the commands from its top directory (i.e. ads-class-pub).
-
- * Clone the repository
-
-    ```
-    git clone https://github.com/LutherCS/ads-class-pub.git
-    ```
-
- * Get updates
-
-    ```
-    git pull origin
-    ```
-
- * Install *pythonds3*
-
-    ```
-    python3 -m pip install -U pythonds3
-    ```
-
- * Install *pytest*
-
-    ```
-    python3 -m pip install -U pytest
-    ```
-
- * Install *pylint*
-
-    ```
-    python3 -m pip install -U pylint
-    ```
-
-## How do I run my code?
-
- *  Run project *hello*
-
-    ```
-    python3 projects/hello/hello.py
-    ```
-
- * Run project *hello* that takes file *data.in* as input
-
-    ```
-    python3 projects/hello/hello.py data/projects/hello/data.in
-    ```
-
-    The source should be modified as follows (sys.argv contains all the arguments passed to the application, including the application file name itself as sys.argv[0]):
-
-    ```
-    import sys
-    
-    
-    def main(filename):
-        print('Processing file {}'.format(filename))
-    
-    
-    if __name__ == '__main__':
-        main(sys.argv[1])
-    
-    ```
-
- * Test project *hello*
-
-    ```
-    python3 -m pytest tests/projects/hello/test_hello.py
-    ```
-
- *  Run exercise *hello*
-
-    ```
-    python3 exercises/hello/hello.py
-    ```
-
- * Test exercise *hello*
-
-    ```
-    python3 -m pytest tests/exercises/hello/test_hello.py
-    ```
-
-## References
-
-### Text Editors and IDEs
-
- [Popular development environments](https://insights.stackoverflow.com/survey/2018) include the following:
- * [Visual Studio Code](https://code.visualstudio.com/) | [setup](https://code.visualstudio.com/docs/languages/python)
- * [Sublime Text](https://www.sublimetext.com/) | [setup](https://realpython.com/setting-up-sublime-text-3-for-full-stack-python-development/)
- * [vim](http://www.vim.org/) | [setup](https://realpython.com/vim-and-python-a-match-made-in-heaven/)
- * [Atom](https://atom.io/)
- * [PyCharm](https://www.jetbrains.com/pycharm/)
- * [Jupyter Notebook](http://jupyter-notebook.readthedocs.io/en/latest/notebook.html)
- * [Wing IDE](https://wingware.com/)
-
-### Tools and Utilities
-
- * [An Introduction to the Linux Terminal | DigitalOcean](https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal)
-
- * [git - the simple guide - no deep shit!](http://rogerdudler.github.io/git-guide/)
-
- * [Installing Packages — Python Packaging User Guide](https://packaging.python.org/tutorials/installing-packages/)
-
- * [Pipenv: A Guide to the New Python Packaging Tool – Real Python](https://realpython.com/pipenv-guide/)
-
- * [pytest: helps you write better programs — pytest documentation](https://docs.pytest.org/en/latest/)
-
-### Python Basics
-
- * [The Python Standard Library — Python 3.7.0 documentation](https://docs.python.org/3/library/index.html)
-
- * [PEP 8 -- Style Guide for Python Code | Python.org](https://www.python.org/dev/peps/pep-0008/)
-
- * [Python Style Guidelines - The Chromium Projects](https://www.chromium.org/chromium-os/python-style-guidelines)
-
- * [mattharrison/Tiny-Python-3.6-Notebook: This repository contains the text for the Tiny Python 3.6 Notebook.](https://github.com/mattharrison/Tiny-Python-3.6-Notebook)
-
- * [crazyguitar/pysheeet: Python Cheat Sheet](https://github.com/crazyguitar/pysheeet)
-
-### Exception Handling
-
- * [8. Errors and Exceptions — Python 3.6.0 documentation](https://docs.python.org/3/tutorial/errors.html)
-
- * [Python Exceptions Handling](https://www.tutorialspoint.com/python/python_exceptions.htm)
-
-### Object-Oriented Programming
-
- * [Object-Oriented Programming (OOP) in Python 3 – Real Python](https://realpython.com/python3-object-oriented-programming/)
-
- * [Jupyter Notebook Viewer - The Tao of Python](http://nbviewer.jupyter.org/github/akittas/presentations/blob/master/pythess/tao_mro/tao_of_python.ipynb)
-
- * [3. Data model — Python 3.7.0 documentation](https://docs.python.org/3/reference/datamodel.html)
-
- * [Underscores in Python](https://shahriar.svbtle.com/underscores-in-python)
-
- * [Python3 Tutorial: Magic Methods](http://www.python-course.eu/python3_magic_methods.php)
-
- * [Python Class Examples: Init and Self - Dot Net Perls](https://www.dotnetperls.com/class-python)
-
- * [The self variable in python explained | Python Tips](https://pythontips.com/2013/08/07/the-self-variable-in-python-explained/)
-
- * [OOP - Inheritance](http://ccm.net/contents/422-oop-inheritance)
-
- * [An Introduction to Classes and Inheritance (in Python) - Jessica Hamrick](http://www.jesshamrick.com/2011/05/18/an-introduction-to-classes-and-inheritance-in-python/)
-
- * [Learn Python the Hard Way - Read for Free](https://learnpythonthehardway.org/book/ex44.html)
-
- * [Python3 Tutorial: Inheritance](http://www.python-course.eu/python3_inheritance.php)
-
-### Algorithm Analysis
-
- * [Analysis of Algorithms](http://www.greenteapress.com/thinkpython/html/thinkpython022.html)
- 
- * [A Gentle Introduction to Algorithm Complexity Analysis](http://discrete.gr/complexity/)
-
- * [Analysis of Algorithms](http://aofa.cs.princeton.edu/10analysis/)
-
-### Basic Data Structures
-
- * [VisuAlgo - Linked List (Single, Doubly), Stack, Queue, Deque](https://visualgo.net/en/list)
-
-### Recursion
-
- * [In plain English, what is recursion? - Software Engineering Stack Exchange](https://softwareengineering.stackexchange.com/questions/25052/in-plain-english-what-is-recursion)
- * [An Introduction to Recursion, Part 1 – topcoder](https://www.topcoder.com/community/data-science/data-science-tutorials/an-introduction-to-recursion-part-1/)
- * [An Introduction to Recursion: Part 2 – topcoder](https://www.topcoder.com/community/data-science/data-science-tutorials/an-introduction-to-recursion-part-2/)
-
-### Searching Algorithms
-
- * [Data Structures and Algorithms Hash Table](https://www.tutorialspoint.com/data_structures_algorithms/hash_data_structure.htm)
-
-  * [Basics of Hash Tables Tutorials & Notes | Data Structures | HackerEarth](https://www.hackerearth.com/practice/data-structures/hash-tables/basics-of-hash-tables/tutorial/)
-
-### Sorting Algorithms
-
- * [Sorting algorithms visualized with animated color palette | FlowingData](https://flowingdata.com/2017/10/26/sorting-algorithms-visualized-with-rainbow-color-palette/)
-
- * [Sorting Algorithm Animations | Toptal](https://www.toptal.com/developers/sorting-algorithms)
-
- * [VisuAlgo - Sorting (Bubble, Selection, Insertion, Merge, Quick, Counting, Radix)](https://visualgo.net/bn/sorting)
-
-### Trees
-
- * [Binary Trees](https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/trees.html)
-
- * [Binary Trees](http://cslibrary.stanford.edu/110/BinaryTrees.html)
-
- * [Binary Tree -- from Wolfram MathWorld](http://mathworld.wolfram.com/BinaryTree.html)
-
-### Graphs
-
- * [Data Structures and Algorithms Graph Data Structure](https://www.tutorialspoint.com/data_structures_algorithms/graph_data_structure.htm)
-
- * [A Gentle Introduction to Data Structures: How Graphs Work](https://medium.freecodecamp.org/a-gentle-introduction-to-data-structures-how-graphs-work-a223d9ef8837)
-
- * [Graph Search, Shortest Paths, and Data Structures | Coursera](https://www.coursera.org/learn/algorithms-graphs-data-structures)
+```
+.
+├── README.md
+├── data
+│   ├── exercises
+│   │   ├── presidents
+│   │   │   └── presidents.txt
+│   │   └── stacks
+│   │       └── parentheses.txt
+│   └── projects
+│       ├── kevinbacon
+│       │   ├── movie_actors_full.txt
+│       │   └── movie_actors_test.txt
+│       ├── keyboard
+│       │   ├── all_firsthalf.in
+│       │   ├── all_secondhalf.in
+│       │   ├── gen100.in
+│       │   ├── gen1000.in
+│       │   ├── gen10000.in
+│       │   ├── gen2500.in
+│       │   ├── gen26.in
+│       │   ├── gen50.in
+│       │   ├── gen5000.in
+│       │   └── sample.in
+│       ├── morse
+│       │   └── morse.txt
+│       ├── rpn
+│       │   ├── rpn_input_1.txt
+│       │   ├── rpn_input_2.txt
+│       │   └── rpn_input_test.txt
+│       └── words
+│           └── words.txt
+├── exercises
+│   ├── 11
+│   │   └── exercise11.md
+│   ├── fractions
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── fractions.cpython-37.pyc
+│   │   ├── fractions.md
+│   │   └── fractions.py
+│   ├── graphs
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── graphs.cpython-37.pyc
+│   │   ├── djikstra_usage.md
+│   │   ├── graphs.md
+│   │   ├── graphs.py
+│   │   └── network.png
+│   ├── hashing
+│   │   ├── __pycache__
+│   │   │   └── hashing.cpython-37.pyc
+│   │   ├── hashing.md
+│   │   └── hashing.py
+│   ├── heaps
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   ├── heaps.cpython-37.pyc
+│   │   │   └── trees.cpython-37.pyc
+│   │   ├── heaps.md
+│   │   ├── heaps.py
+│   │   ├── textbook_heap.py
+│   │   └── trees.py
+│   ├── orderedlists
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── orderedlists.cpython-37.pyc
+│   │   ├── orderedlists.md
+│   │   └── orderedlists.py
+│   ├── presidents
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── presidents.cpython-37.pyc
+│   │   ├── presidents.md
+│   │   └── presidents.py
+│   ├── recursion
+│   │   ├── recursion.md
+│   │   └── recursion.py
+│   ├── sorting
+│   │   ├── sorting.md
+│   │   └── sorting.py
+│   ├── stacks
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── stacks.cpython-37.pyc
+│   │   ├── rpm_calc.py
+│   │   ├── stacks.md
+│   │   ├── stacks.py
+│   │   ├── stacks_notes.md
+│   │   └── stacks_oop.py
+│   ├── trees
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   ├── trees.cpython-37.pyc
+│   │   │   └── treeslst.cpython-37.pyc
+│   │   ├── order.txt
+│   │   ├── tree_ex_1.png
+│   │   ├── trees.md
+│   │   ├── trees.py
+│   │   └── treeslst.py
+│   └── zoo
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   ├── __init__.cpython-37.pyc
+│       │   └── zoo.cpython-37.pyc
+│       ├── zoo.md
+│       ├── zoo.py
+│       └── zoo_main.py
+├── notes
+│   ├── basicds
+│   │   ├── linkedlists.py
+│   │   └── stacks.py
+│   ├── basics
+│   │   ├── fileops.py
+│   │   └── sample.in
+│   ├── graphs
+│   │   ├── __init__.py
+│   │   └── graphs.py
+│   ├── oop
+│   │   ├── exceptions.py
+│   │   ├── inheritance.py
+│   │   └── oop.py
+│   ├── recursion
+│   │   └── recursion.py
+│   └── trees
+│       ├── BinaryTree.py
+│       └── __init__.py
+├── projects
+│   ├── bank
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── bank.cpython-37.pyc
+│   │   ├── bank.md
+│   │   └── bank.py
+│   ├── customproblem
+│   │   ├── __init__.py
+│   │   ├── customproblem.md
+│   │   ├── customproblem.py
+│   │   └── test_customproblem.py
+│   ├── dice
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── dice.cpython-37.pyc
+│   │   ├── dice.md
+│   │   └── dice.py
+│   ├── kevinbacon
+│   │   ├── __init__.py
+│   │   ├── kevinbacon.md
+│   │   ├── kevinbacon.png
+│   │   └── kevinbacon.py
+│   ├── keyboard
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── keyboard.cpython-37.pyc
+│   │   ├── keyboard.md
+│   │   └── keyboard.py
+│   ├── mapadt
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── mapadt.cpython-37.pyc
+│   │   └── mapadt.py
+│   ├── morse
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── morse.cpython-37.pyc
+│   │   ├── morse.md
+│   │   ├── morse.py
+│   │   └── morse1.py
+│   ├── rpn
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── rpn.cpython-37.pyc
+│   │   ├── rpn.md
+│   │   └── rpn.py
+│   ├── water
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   └── water.cpython-37.pyc
+│   │   ├── water.md
+│   │   └── water.py
+│   └── words
+│       ├── __init__.py
+│       ├── words.md
+│       └── words.py
+└── tests
+    ├── exercises
+    │   ├── fractions
+    │   │   ├── __pycache__
+    │   │   │   └── test_fractions.cpython-37-PYTEST.pyc
+    │   │   ├── fractions_output.txt
+    │   │   └── test_fractions.py
+    │   ├── graphs
+    │   │   ├── __pycache__
+    │   │   │   └── test_graphs.cpython-37-PYTEST.pyc
+    │   │   └── test_graphs.py
+    │   ├── hashing
+    │   │   ├── __pycache__
+    │   │   │   └── test_hashing.cpython-37-PYTEST.pyc
+    │   │   ├── hashing_output.txt
+    │   │   └── test_hashing.py
+    │   ├── heaps
+    │   │   ├── __pycache__
+    │   │   │   └── test_heaps.cpython-37-PYTEST.pyc
+    │   │   ├── test_heaps.py
+    │   │   └── test_trees2.py
+    │   ├── orderedlists
+    │   │   ├── __pycache__
+    │   │   │   └── test_orderedlists.cpython-37-PYTEST.pyc
+    │   │   ├── orderedlists_output.txt
+    │   │   └── test_orderedlists.py
+    │   ├── presidents
+    │   │   ├── __pycache__
+    │   │   │   └── test_presidents.cpython-37-PYTEST.pyc
+    │   │   ├── presidents_output.txt
+    │   │   └── test_presidents.py
+    │   ├── recursion
+    │   │   └── recursion_output.txt
+    │   ├── sorting
+    │   │   ├── __pycache__
+    │   │   │   └── sorting.cpython-37-PYTEST.pyc
+    │   │   ├── sorting.py
+    │   │   └── sorting_output.txt
+    │   ├── stacks
+    │   │   ├── __pycache__
+    │   │   │   └── test_stacks.cpython-37-PYTEST.pyc
+    │   │   └── test_stacks.py
+    │   ├── trees
+    │   │   ├── __pycache__
+    │   │   │   └── test_trees.cpython-37-PYTEST.pyc
+    │   │   └── test_trees.py
+    │   └── zoo
+    │       ├── __pycache__
+    │       │   └── test_zoo.cpython-37-PYTEST.pyc
+    │       ├── test_zoo.py
+    │       └── zoo_output.txt
+    └── projects
+        ├── bank
+        │   ├── __pycache__
+        │   │   └── test_bank.cpython-37-PYTEST.pyc
+        │   └── test_bank.py
+        ├── customproblem
+        │   ├── __pycache__
+        │   │   └── test_customproblem.cpython-37-PYTEST.pyc
+        │   └── test_customproblem.py
+        ├── dice
+        │   ├── __pycache__
+        │   │   └── test_dice.cpython-37-PYTEST.pyc
+        │   ├── dice_output.txt
+        │   └── test_dice.py
+        ├── kevinbacon
+        │   ├── kevinbacon_output.txt
+        │   └── test_kevinbacon.py
+        ├── keyboard
+        │   ├── __pycache__
+        │   │   └── test_keyboard.cpython-37-PYTEST.pyc
+        │   ├── all_firsthalf.out
+        │   ├── all_secondhalf.out
+        │   ├── gen100.out
+        │   ├── gen1000.out
+        │   ├── gen10000.out
+        │   ├── gen2500.out
+        │   ├── gen26.out
+        │   ├── gen50.out
+        │   ├── gen5000.out
+        │   ├── sample.out
+        │   └── test_keyboard.py
+        ├── mapadt
+        │   ├── __pycache__
+        │   │   └── test_mapadt.cpython-37-PYTEST.pyc
+        │   └── test_mapadt.py
+        ├── morse
+        │   ├── __pycache__
+        │   │   └── test_morse.cpython-37-PYTEST.pyc
+        │   ├── morse_output.txt
+        │   └── test_morse.py
+        ├── rpn
+        │   ├── __pycache__
+        │   │   └── test_rpn.cpython-37-PYTEST.pyc
+        │   ├── rpn_output_1.txt
+        │   ├── rpn_output_2.txt
+        │   └── test_rpn.py
+        ├── water
+        │   ├── __pycache__
+        │   │   └── test_water.cpython-37-PYTEST.pyc
+        │   ├── test_water.py
+        │   └── water_output.txt
+        └── words
+            ├── __pycache__
+            │   └── test_words.cpython-37-PYTEST.pyc
+            ├── test_words.py
+            ├── words_output.txt
+            └── words_output_debug.txt
+
+100 directories, 204 files
+```
