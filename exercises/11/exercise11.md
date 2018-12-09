@@ -19,7 +19,7 @@
 2. What is the Big-Oh time estimate of using Bubble sort on the following list `L = [1, 2, 4, 3, 5, 6, 7, 8, 9]`?
 
 ```python
-O(n2)
+O2(n)
 ```
 
 3. Given the following list, `L = [1, 3, 5, 7, 9, 11, 13, 17, 19, 23]`, how many key comparisons the binary search algorithm would do when searching for the key 5?
