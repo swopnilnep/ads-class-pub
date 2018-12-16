@@ -118,4 +118,4 @@ venv.bak/
 !.vscode/extensions.json
 
 
-# End of https://www.gitignore.io/api/python,visualstudiocode
+# End of https://www.gitignore.io/api/python,visualstudiocode.vscode
